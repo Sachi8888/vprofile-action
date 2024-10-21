@@ -26,7 +26,8 @@ jobs:
         uses: warchant/setup-sonar-scanner@v7
 
       - name: SonarQube Scan
-        run: sonar-scanner
+        run:
+          sonar-scanner
           -Dsonar.host.url=${{secrets.SONAR_URL}}
           -Dsonar.login=${{secrets.SONAR_TOKEN}}
           -Dsonar.organization=${{secrets.SONAR_ORGANIZATION}}
@@ -35,7 +36,7 @@ jobs:
           -Dsonar.junit.reportsPath=target/surefire-reports/
           -Dsonar.jacoco.reportsPath=target/jacoco.exec
           -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml
-          -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest
+          # -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest
 
       - name: SonarQube Quality Gate checkstyle:checkstyle
         id: sonarqube-quality-gate-cehck
